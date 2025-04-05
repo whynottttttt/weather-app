@@ -20,6 +20,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const cities = ['paris', 'new york', 'tokyo', 'seoul'];
+  const OPENWEATHER_API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
 
   const getCurrentLocation = () => {
     setError(null);
@@ -40,7 +41,7 @@ function App() {
   const getWeatherByCurrentLocation = async (lat, lon) => {
     try {
       setLoading(true);
-      let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=6c6a527bdcca53e5c9bc50147de27add&units=metric`;
+      let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_API_KEY}add&units=metric`;
       let response = await fetch(url);
 
       if (!response.ok) {
@@ -63,7 +64,7 @@ function App() {
     try {
       setLoading(true);
       setError(null);
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6c6a527bdcca53e5c9bc50147de27add&units=metric`;
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${OPENWEATHER_API_KEY}add&units=metric`;
       let response = await fetch(url);
 
 
